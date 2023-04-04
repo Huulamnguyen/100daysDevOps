@@ -1,6 +1,6 @@
 ## 100 Days of DevOps
 
-<img src="assets/images/devops-loop.svg" width="1100" height="800">
+<img src="assets/images/devops-loop.svg">
 
 ### Description:
 

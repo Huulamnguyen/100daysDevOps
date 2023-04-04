@@ -1,5 +1,7 @@
 ## 100 Days of DevOps
 
+<img src="assets/images/devops-loop.svg" width="1100" height="800">
+
 ### Description:
 
 The challenge involves committing to learning and implementing DevOps principles for 100 consecutive days and sharing my progress with the DevOps community on GitHub, Medium, and my personal blog on my portfolio
@@ -25,10 +27,10 @@ Check it out at [Techworld with Nana][def]
 2. [Operating Systems & Linux Basics](#operating-systems-&-linux-basics)</summary>
     1. [Introduction to Operating Systems](#introduction-to-operating-systems)
 
-### Contents
+## Contents
 
 ### 2. Operating Systems & Linux Basics <a name="operating-systems-&-linux-basics"></a>
-    
+
 #### 1. Introduction to Operating Systems <a name="introduction-to-operating-systems"></a>
 
 **What is operating system?**

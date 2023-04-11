@@ -24,19 +24,20 @@ Check it out at [Techworld with Nana][def]
 [def]: https://techworld-with-nana.teachable.com/courses
 
 ### Table of Contents
-2. [Operating Systems & Linux Basics](#operating-systems-&-linux-basics)
-    1. [Introduction to Operating Systems](#introduction-to-operating-systems)
-    2. [Introduction to Virtualization & Virtual Machines](#introduction-to-virtualization-&-virtual-machine)
-    3. [Setup a Linux Virtual Machine](#setup-virtual-machine)
-    4. [Linux File System](#linux-file-system)
-    5. [Introduction to Command Line Interface (CLI - Part 1)](#introduction-to-command-line-interface-part-1)
-    6. [Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
-    7. [Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
-    8. [Working with Vim Editor](#working-with-vim-editor)
+
+### 2. Operating Systems & Linux Basics
+1. [Introduction to Operating Systems](#introduction-to-operating-systems)
+2. [Introduction to Virtualization & Virtual Machines](#introduction-to-virtualization-&-virtual-machine)
+3. [Setup a Linux Virtual Machine](#setup-virtual-machine)
+4. [Linux File System](#linux-file-system)
+5. [Introduction to Command Line Interface (CLI - Part 1)](#introduction-to-command-line-interface-part-1)
+6. [Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
+7. [Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
+8. [Working with Vim Editor](#working-with-vim-editor)
 
 ## Contents
 
-### 2. Operating Systems & Linux Basics <a name="operating-systems-&-linux-basics"></a>
+### 2. Operating Systems & Linux Basics 
 
 #### 1. Introduction to Operating Systems <a name="introduction-to-operating-systems"></a>
 
@@ -173,7 +174,7 @@ GUI and CLI acre two ways to interact with operating system.
 - Easier for bulk operations 
 - CLI is more powerful
 
-#### 6. Basic Linux Commands (CLI - Part 2) <a name="basic-linux-commands-cli-part-2></a>
+#### 6. Basic Linux Commands (CLI - Part 2) <a name="basic-linux-commands-cli-part-2"></a>
 General Operations:
     
     - clear = Clears the terminal

@@ -31,6 +31,8 @@ Check it out at [Techworld with Nana][def]
     4. [Linux File System](#linux-file-system)
     5. [Introduction to Command Line Interface (CLI - Part 1)](#introduction-to-command-line-interface-part-1)
     6. [Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
+    7. [Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
+    8. [Working with Vim Editor](#working-with-vim-editor)
 
 ## Contents
 
@@ -171,7 +173,7 @@ GUI and CLI acre two ways to interact with operating system.
 - Easier for bulk operations 
 - CLI is more powerful
 
-### 6 - Basic Linux Commands (CLI - Part 2) <a name="basic-linux-commands-cli-part-2></a>
+#### 6. Basic Linux Commands (CLI - Part 2) <a name="basic-linux-commands-cli-part-2></a>
 General Operations:
     
     - clear = Clears the terminal
@@ -231,3 +233,111 @@ Execute commands as superuser
 
     - sudo [some command] = Allows regular users to run programs with the security privileges of the superuser or root
     - su - admin = Switch from nana user to admin
+
+#### 7. Package Manager - Installing Software on Linux <a name="package-manager-install-software-on-linux"></a>
+**How to install software**
+- On Windows
+    - On Windows you have download installer
+    - Wizards that guide you through the installation
+
+- On Linux:
+    - On Linux you will install **applications mostly with package manager tools** on CLI
+
+**Introduction to Package Manager**
+- Tasks of a Package Manager:
+    - Downloads, installs or updates existing software from a repository
+    - Ensures the integrity and authenticity of the package
+    - Manages and resolves all required dependencies
+    - Knows where to put all the files in the Linux file system
+    - Easy upgrading of the software.
+
+**Package Manager - pre-installed**
+- Package Manager is already included in every Linux distribution
+- On Ubuntu, you have APT package manager available. **APT = Advanced Package Tool**
+- Package Manager like apt has commands you can use to install, uninstall or upgrade software
+
+**Package Repository**
+- A repository is a storage location, where all the software packages are hosted
+- Contains thousands of programs
+- Package Manager fetches the packages from these repositories
+- `sudo apt update`:
+    - Pulls the latest changes from the APT repositories
+    - The APT package index is basically a database
+    - Holding records of available packages from the repositories
+
+**Alternative Package Manager**
+- A very similar package manager is APT-GET, which you will often come across
+- APT:
+    - user friendly
+    - Fewer
+    - Recommended by Linux distributions
+- APT-GET:
+    - On Ubuntu, APT-GET also out of the box available
+    - Different set of commands
+    - You can achieve the same user friendly output, if you use additional command options
+    - E.g. "apt search" not available
+
+**Alternative ways to install software**
+- Ubuntu Software Center
+    - Like an app store
+    - A utility for installing, purchasing, removing software in Ubuntu
+    - Has a graphical UI, so no need for using the CLI
+- Snap Package Manager
+    - Snap is a software packaging and deployment system
+    - Snap = A snap is a bundle of an app and its dependencies 
+    - Snap Store = Provides a place to upload snaps, and for users to browse and install the software
+    - Snapcraft = Is the command and framework used to build and publish snaps
+
+**Linux Distribution**
+- Debian Based: APT OR APT-GET (package manager)
+    - Ubuntu
+    - Debian
+    - Mint
+
+- Read Hat Based: YUM (package manager)
+    - RHEL
+    - CentOS
+    - Fedora
+
+#### 8. Working with Vim Editor <a name="working-with-vim-editor"></a>
+
+**Introduction to Vi and Vim**
+- Vi and Vim are built-in text editors in Linux
+
+**Use cases for using text editor in CLI**
+- Small modifications can be faster, especially when you are currently working in the CLI
+- Faster to create and edit at the same time
+- Supports multiple formats
+- When working on a server
+
+**Working with Vim**
+- Vim has two modes:
+    - Insert mode
+    - Command mode:
+        - This is the default mode
+        - You can't edit the text
+        - Whatever you type is interpreted as a command 
+       - Navigate, Search, Delete, Undo etc.
+
+- `vim {filename}` => open the file name, if it doesn't exist, create a new one.
+- **Editing**:
+    - `i`: switch to insert mode
+    - `dd`: delete a line
+    - `d10`: delete 10 lines
+    - `u`: undo
+    - `0`: jump to the start of line
+    - `$`: jump to the end of line
+    - `A`: jump to the end of line and switch to insert mode
+    - `12G`: go to line 12
+
+- **Saving and quitting**:
+    - `:wq`: write file to disk and quit vim
+    - `:q!`: quit vim without saving changes
+
+- **Searching and Replacing**
+    - `/pattern`: will search the pattern
+    - `n`: jump to the match
+    - `N`: jump to the previous match
+    - `:%s/mystring/my-new-string`: will replace all occurrences of "my-stirng" with "my-new-string"
+
+- Pressing `Escape`, switches you back to **command mode**

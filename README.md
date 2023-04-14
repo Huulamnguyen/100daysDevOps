@@ -26,16 +26,16 @@ Check it out at [Techworld with Nana][def]
 ### Table of Contents
 
 ### 2. Operating Systems & Linux Basics
-1. [Introduction to Operating Systems](#introduction-to-operating-systems)
-2. [Introduction to Virtualization & Virtual Machines](#introduction-to-virtualization-&-virtual-machine)
-3. [Setup a Linux Virtual Machine](#setup-virtual-machine)
-4. [Linux File System](#linux-file-system)
-5. [Introduction to Command Line Interface (CLI - Part 1)](#introduction-to-command-line-interface-part-1)
-6. [Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
-7. [Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
-8. [Working with Vim Editor](#working-with-vim-editor)
-16. [Networking](#networking)
-17. [SSH - Secure Shell](#ssh-secure-shell)
+1. [1 - Introduction to Operating Systems](#introduction-to-operating-systems)
+2. [2 - Introduction to Virtualization & Virtual Machines](#introduction-to-virtualization-&-virtual-machine)
+3. [3 - Setup a Linux Virtual Machine](#setup-virtual-machine)
+4. [4 - Linux File System](#linux-file-system)
+5. [5 - Introduction to Command Line Interface (CLI - Part 1)](#introduction-to-command-line-interface-part-1)
+6. [6 - Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
+7. [7 - Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
+8. [8 - Working with Vim Editor](#working-with-vim-editor)
+16. [16 - Networking](#networking)
+17. [17 - SSH - Secure Shell](#ssh-secure-shell)
 
 ### 3. Version Control with Git
 1. [Introduction to Version Control and Git](#introduction-to-version-control-and-git)

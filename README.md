@@ -34,6 +34,11 @@ Check it out at [Techworld with Nana][def]
 6. [Basic Linux Commands (CLI - Part 2)](#basic-linux-commands-cli-part-2)
 7. [Package Manager - Installing Software on Linux](#package-manager-install-software-on-linux)
 8. [Working with Vim Editor](#working-with-vim-editor)
+16. [Networking](#networking)
+17. [SSH - Secure Shell](#ssh-secure-shell)
+
+### 3. Version Control with Git
+1. [Introduction to Version Control and Git](#introduction-to-version-control-and-git)
 
 ## Contents
 
@@ -342,3 +347,76 @@ Execute commands as superuser
     - `:%s/mystring/my-new-string`: will replace all occurrences of "my-stirng" with "my-new-string"
 
 - Pressing `Escape`, switches you back to **command mode**
+
+#### 16. Networking <a name="networking"></a>
+
+> In this article, we will answer some basic questions about networking, such as:
+    >> - How do computer networks work?
+    >> - How do computers connect to the internet?
+    >> - What is an IP Address and port?
+    >> - What is a DNS?
+
+- **LAN (Local Area Network)**
+    - Collections of devices connected together in one physical location like home, school, ... etc.
+    - Each device has a unique IP (Internet Protocol) address
+    - Devices communicate via these IP addresses
+
+- **Switch**: facilitates the connection between all the devices within the LAN
+- **Router**: network device to connect devices on **LAN** and **WAN (Wide Area Network)**
+    - IP Address of the router is called **gateway**
+
+- **Subnet**: sets of IP addresses range.
+- **NAT (Network Address Translation)**:
+    - Security and protection of devices within the LAN
+    - Reuse IP addresses
+
+- **Firewall**: prevent unauthorized access from entering a private network
+        - Which IP address in your network is accessible 
+        - Which IP address can access your server
+        - For example: You can allow any device access your server
+- **What is a port?**: 
+    - Every device has a set of ports
+    - Each port is unique on a device
+    - You can allow specific ports (doors)
+    - You can allow specific ports (doors) AND specific IP addresses (guests)
+    - There are many standard ports for many applications
+        - Web servers: Port 80
+        - Mysql DB: Port 3306
+        - PostgreSQL DB: Port 5432 
+
+- **DNS (Domain Name System)**:
+    - DNS is the phonebook of the internet 
+    - It translates human readable domain names (for example: www.amazon.com) to machine readable IP addresses
+    - **How DNS resolution works**:
+        - When you enter a website in a browser, a DNS client on your computer needs to look up the corresponding IP address
+        - It queries DNS servers to resolve the name 
+        - DNS queries can resolve in different ways
+
+- **Networking Commands**:
+    - `ifconfig`: Getting network configuration
+    - `netstat`: Network connections, routing tables, interface statistics
+    - `ps aux`: Tool to monitor processes running on your Linux system
+    - `nslookup`: Query DNS lookup name
+    - `ping`: test network connection
+
+#### 17. SSH - Secure Shell <a name="ssh-secure-shell"></a>
+- Some Use Cases of SSH:
+    - Copy file to remote server
+    - Install software on new server
+
+- SSH is a protocol that gives users a secure way to access a computer over the Internet.
+
+- **How it works:**
+    - The protocol works in the client-server model
+    - Meaning you use a program on your computer (SSH client) to connect to the remote server (SSH server)
+    - For that you can use a graphical user interface, but mostly the CLI
+
+- **2 ways to authenticate**
+    - Use **username** and **password** by creating a user on remote server
+    - SSH Key Pair: `Key Pair = Private Key + Public Key`
+        - **Private Key** = Secret key. Is stored securely on the client machine (your computer)
+        - **Public Key** = Public. Can be shared, e.g. with the remote server (sever or cloud provider)
+
+### 3. Version Control with Git
+
+#### 1. Introduction to Version Control and Git <a name="introduction-to-version-control-and-git"></a>

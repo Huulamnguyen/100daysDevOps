@@ -38,14 +38,15 @@ Check it out at [Techworld with Nana][def]
 17. [17 - SSH - Secure Shell](#ssh-secure-shell)
 
 ### 3. Version Control with Git
-1. [Introduction to Version Control and Git](#introduction-to-version-control-and-git)
+1. [1 - Introduction to Version Control and Git](#introduction-to-version-control-and-git)
+2. [2 - Basic Concepts of Git](#basic-concepts-of-git)
+3. [3 - Setup Git Repository Remote and Local](#setup-git-remote-and-local)
 
 ## Contents
 
 ### 2. Operating Systems & Linux Basics 
 
 #### 1. Introduction to Operating Systems <a name="introduction-to-operating-systems"></a>
-
 **What is operating system?**
     
 Operating System (OS) is a software managing: 
@@ -420,3 +421,36 @@ Execute commands as superuser
 ### 3. Version Control with Git
 
 #### 1. Introduction to Version Control and Git <a name="introduction-to-version-control-and-git"></a>
+
+- Git control is an approach for team of developers working together
+- Git knows how to mnerge automatically
+- **Merge conflict** when same line was changed
+- Best practice: push and pull often from remote repo
+
+>> Continuous Integration: intergrate your code changes frequently
+
+#### 2. Basic Concepts of Git <a name="basic-concepts-of-git"></a>
+- Remote Git Repository: where the code is hosted, e.g. on **Gitlab** or **GitHub**
+- Local Git Repository: local copy of the code on your machine
+- Git Client: to connect and execute git commands can be UI or Command Line Tool
+
+#### 3. Setup Git Repository Remote and Local <a name="setup-git-remote-and-local"></a>
+
+**Some Git Commans that I think they are useful:**
+- To show commit log: 
+    - `git log`
+- Gitignore:
+    - `git rm -r --cached [filename/foldername]`: remove file/folder already in tracking.
+- Git Stash: for work-in-progress branch
+    - `git stash`: to store your changes somewhere
+    - `git stash pop`: to add the changes back to your branch
+- To undo/revert  commit:
+    - `git reset --hard HEAD~1`: 1 - number of commits to reset, the change will be removed
+    - `git reset --soft HEAD`: undo commit but keep the changes
+- When the changes belong to previous commit:
+    - `git commit --amend`: instead of creating a new commit, it will merge the changes to the previous commit
+- To undo / revert a commit, or remove a commit in remote repository:
+    - First, revert or redo a commit by `git reset --hard HEAD~1` => remove old commit
+    - Then `git push --force`, need to add `force` to override the commit in remote repository
+    - An alternative approach, `git revert <commit ID or hash>` => creates a new commit to revert the old commit's changes.
+- Merge Branches: `git merge <branch>`

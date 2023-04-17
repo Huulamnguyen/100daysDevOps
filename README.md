@@ -42,6 +42,22 @@ Check it out at [Techworld with Nana][def]
 2. [2 - Basic Concepts of Git](#basic-concepts-of-git)
 3. [3 - Setup Git Repository Remote and Local](#setup-git-remote-and-local)
 
+### Bonus. Databases
+1. [1 - Databases in development process](#databases-in-development-process)
+2. [2 - Database Types](#database-type)
+
+### 4. Build Tools and Package Manager Tools
+1. [1 - Introduction to Build Tools](#introduction-to-build-tools)
+2. [2 - Install Build Tools](#install-build-tools)
+6. [6 - Build an Artifact](#build-an-artifact)
+7. [7 - Build Tools for Development](#build-tools-for-development)
+8. [8 - Run the Application](#run-the-application)
+9. [9 - Build JS Applications](#build-js-application)
+10. [10 - Common Concepts and Differences of Build Tools](#common-concepts-and-differences-of-build-tools)
+
+### 5 - Cloud & Infrastructure as Service Basics with DigitalOcean
+1. [1 - Intro to Cloud & IaaS](#intro-to-cloud-and-iaas)
+
 ## Contents
 
 ### 2. Operating Systems & Linux Basics 
@@ -454,3 +470,161 @@ Execute commands as superuser
     - Then `git push --force`, need to add `force` to override the commit in remote repository
     - An alternative approach, `git revert <commit ID or hash>` => creates a new commit to revert the old commit's changes.
 - Merge Branches: `git merge <branch>`
+    - First, need to pull the latest commit from the remote master to local master branch
+    - Then, `git merge master` the local master branch to the feature branch.
+
+**Git for DevOps**
+- Infrastructura as code
+    - Many Kubernetes Configuration Files. Deployment to Kubernetes
+    - Terrform and Ansible COnfiguration Files
+    - Bash or Python scripts
+    - Files should be:
+        - Tracked - history of changes
+        - Securely store in one place
+        - Shareable for DevOps team.
+- CI/Cd Pipline and Build Automation
+    - Checkout code, test and build application, etc.
+    - Need integration btween the build automation tool and application git repository.
+
+### Bonus - Databases
+#### 1 - Databases in development process <a name="databases-in-development-process"></a>
+**How does databases connect to your application?**
+- DB endpoinbts & credentials should not be hard-coded
+- Define in 1 place as environment variables
+- Configure from outside
+- Depending on environment DEV, TEST, PROD
+
+#### 2 - Database Types <a name="database-type"></a>
+**Database Types**
+- Key Value Database: 
+    - unquie key, no joinn, in memory
+    - Very fast
+    - Limited storage
+    - No primary DB
+    - Best for:
+        - Caching
+        - Message queues
+- Wide column Database:
+    - Popular database: Cassandra, HBase
+    - Schema less
+    - Scalable
+    - No Joins
+    - Best for:
+        - Tim-series
+        - IoT-RECORDS
+        - HISTORICAL-RECORDS
+- Document Databases:
+    - Popular database: MongoDB, DynamoDB, CouchDB
+    - Schema less
+    - Collections
+    - No Join and slower than relational DB
+    - Faster to read
+    - Best for:
+        - Mobile Apps
+        - Games
+        - Content Management
+        - Most Apps
+- relational Database:
+    - MySQL, PostgreSQL
+    - Most widely used
+    - To store stuctureed data
+    - Schema and data types need to be created first
+    - SQL
+- GraphQL Database
+    - Redis
+- Search Database
+    - Search database through massive data entries
+
+### 4. Build Tools and Package Manager Tools
+#### 1 - Introduction to Build Tools <a name="introduction-to-build-tools"></a>
+
+**What are Build and Package Manager Tools?**
+- Application needs to be deployed on a production server. 
+- For that, we want to package application into a single moveable file (artifact), also called "building the code"
+- This is what a build tool or package manager tool does
+
+**What is an "artifact"?**
+- **What is an "artifact"?** Includes application code and all its dependencies
+- **What does "building the code" mean?** 
+    - Compiling the code
+    - Compressing the code
+    - Package hundred of files to 1 single file
+- **What is an "artifact repository"?** Keep artifact in storage (artifact repository) to deploy it multiple times, have backup, etc. in dev, test and production env
+- **What kind og file is the artifact?**
+    - Java **JAR or WAR file**
+    - JavaScript's artifact can be a **zip or tar file**
+
+#### 2 - Install Build Tools <a name="install-build-tools"></a>
+- Install Java. Download from `https://www.java.com/en/download/`
+- Install Maven. Download `brew install maven`. Check if it has already been installed `mvn -version`
+- Install Node + npm. Dowload
+- Download IntelliJ
+
+#### 6 - Build an Artifact <a name="build-an-artifact"></a>
+- **Build an Artifact**
+    - "Build" Process in Maven or Gradle:
+        - Installs dependencies
+        - Compiles and compresses your code
+    - Example Build Tools for Java: 
+        - Gradle: to run java gradle app `./gradlew build`, file `java-maven-app-1.1.0-SNAPSHOT.jar`
+        - Maven: to run maven app `mvn install`, file `java-app-1.0-SNAPSHOT.jar`
+    - Artifact: JAR or WAR file
+
+- Different Build Tools for different programming languages
+    - Java Build Tools: Gradle and Maven
+    - JavaScript Package Manager: npm
+
+#### 7 - Build Tools for Development <a name="build-tools-for-development"></a>
+- A build tool is used to manage dependencies of a project
+
+#### 8 - Run the Application <a name="run-the-application"></a>
+- Locally, for example to test: `java -jar <name of jar file>`
+- On a deployment server: Copy the jar file to server, where application should run and execute "java -jar" command
+
+#### 9 - Build JS Applications <a name="build-js-application"></a>
+- Artifact of a JavaScript application is e.g. a **zip or tar** file
+- JS Package Manager: npm and yarn
+- `package.json` file for dependencies
+- Package manager install dependencies, but not used for transpiling JS code
+- JS libraries can be found in npm repository
+
+- **Command Line Tool for npm:**
+    - npm install: installs the dependencies
+    - npm start: start the application
+    - npm stop: stop the application
+    - npm test: run test 
+    - npm publish: publish the artifact
+- **What does the zip/tar artifact file include?**
+    - application code, but NOT the dependencies
+
+- Run JavaScript application on server:
+    - 1.Copy Zip/Tar file to server 
+    - 2.Unpack zip/tar
+    - 3.Install dependencies `package.json`
+    - 4.Run the application
+
+- To build artifact: run `npm pack`
+
+**Package Frontend Code**: React Frontend Code
+- Frontend/React Code needs to be transpiled into browser compatible code
+- Code needs to be compressed/minified, compressed JS and CSS files for faster performance in browser
+- Build Tools/Bundler for Javascript Frontend, for example **webpack** transpiles | minifies | bundles | compresses the code
+
+#### 10 - Common Concepts and Differences of Build Tools <a name="common-concepts-and-differences-of-build-tools"></a>
+- Java: maven | gradle
+- JavaScript: npm | yarn | webpack 
+- Python: pip
+- C/C++: conan
+- C#: NuGet
+- Golang: dep
+- Ruby: RubyGems
+
+#### Wrap up
+- Java Gradle App:
+    - Build artifact: `./gradlew build`
+    - Test: `./gradlew test`
+    - Clean: `./gradlew clean`
+    - Start application: `java -jar bootcamp-java-project-1.0-SNAPSHOT.jar`
+
+### 5 - Cloud & Infrastructure as Service Basics with DigitalOcean
+#### 1 - Intro to Cloud & IaaS <a name="intro-to-cloud-and-iaas"></a>

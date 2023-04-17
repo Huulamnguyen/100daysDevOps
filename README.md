@@ -57,6 +57,9 @@ Check it out at [Techworld with Nana][def]
 
 ### 5 - Cloud & Infrastructure as Service Basics with DigitalOcean
 1. [1 - Intro to Cloud & IaaS](#intro-to-cloud-and-iaas)
+2. [2 - Setup Server on DigitalOcean](#setup-server-on-digitalocean)
+3. [3 - Deploy and run application artifact on Droplet](#deploy-and-run-application-artifact-on-droplet)
+4. [4 - Create and configure a Linux user on a cloud server](#create-and-configure-linux-user-on-cloud-server)
 
 ## Contents
 
@@ -628,3 +631,44 @@ Execute commands as superuser
 
 ### 5 - Cloud & Infrastructure as Service Basics with DigitalOcean
 #### 1 - Intro to Cloud & IaaS <a name="intro-to-cloud-and-iaas"></a>
+
+- **What is Infrastructure as a Service (IaaS)?**
+    - Move your physical infrastructure to cloud 
+    - You just rent the servers on demand
+
+- **What is Cloud Computing?**
+    - Cloud Computing is the delivery of computing services - including servers, storage, databases, networking, software - over the internet ("the cloud")
+    - IaaS is 1 of 4 types of cloud services. Others: Software as a Service (SaaS), Platform as a Service (PaaS) and Serverless
+
+- **Infrastructure as a Service Providers**
+    - AWS
+    - Digital Ocean
+    - Miscrosoft Azure
+    -  Google Cloud
+
+#### 2 - Setup Server on DigitalOcean <a name="setup-server-on-digitalocean"></a>
+- server on DO is called a droplet
+- Better practice: 
+    - Connect to server with SSH pblic key from your local machine
+    - Creata firewall
+
+#### 3 - Deploy and run application artifact on Droplet <a name="deploy-and-run-application-artifact-on-droplet\"></a>
+
+- Example for Java (Gradle) and React Application
+- In local machine:
+    - Use built tool to create artifact: `./gradlew build`
+    - Copy the artifact to remote server on DO: `scp <jar file path> root@159.89.1.9.211:/root`
+    - On  DO server, run java application `java -jar <the jar file>`
+    - To check if the application is running on DO:
+        - `ps aux | grep java`
+        - `netstat -lpnt`
+
+#### 4 - Create and configure a Linux user on a cloud server <a name="create-and-configure-linux-user-on-cloud-server"></a>
+- Security best practices:
+    - Create seperate user for every application, avoid using root user
+    - Create new user: `adduser <user>`
+    - Change or update permissions, add to **sudo** group: `usermod -aG sudo <username>`
+    - Switch to other user: `su - <user>`
+        - **$**: Standard Linux user
+        - **#**: Root user
+    - Assign SSH public key to standard user

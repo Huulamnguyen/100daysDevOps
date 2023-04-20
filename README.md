@@ -67,6 +67,8 @@ Check it out at [Techworld with Nana][def]
 5. [5 - Publish Artifact to Repository](#publish-artifact-to-repository)
 6. [6 - Nexus REST API](#nexus-rest-api)
 7. [7 - Blob Store](#blob-store)
+8. [8 - Component vs Asset](#component-vs-asset)
+9. [9 - Cleanup Policies and Scheduled Tasks](#cleanup-policies-and-scheduled-tasks)
 
 ## Contents
 
@@ -718,6 +720,30 @@ Execute commands as superuser
     - Using a tool like curl or wget to execute http request 
     - You need to provide user and credential of a Nexus user
 - List all available repositories as admin in nexus `curl -u usr:pwd -X GET "http://localhost:8081/service/rest/v1/repositories"`
-- List all components in the certain repo `curl -u usr:pwd -X GET "http://localhost:8081/service/rest/v1/components?repository=maven-snapshots"
+- List all components in the certain repo `curl -u usr:pwd -X GET "http://localhost:8081/service/rest/v1/components?repository=maven-snapshots"`
 
 #### 7 - Blob Store <a name="blob-store"></a>
+- Blob store is a storage of nexus
+- Directory that Nexus configuration and blob store: `/opt/sonatype-work/nexus3/`
+- Blob Store Types:
+  - Type filed = storage backend
+  - File system-based storage
+  - Cloud-based storage (S3 AWS)
+
+#### 8 - Component vs Asset <a name="component-vs-asset"></a>
+- Component
+    - abstract
+      - what we are uploading 
+      - term "component" refers to any type or format
+- Asset
+  - actual physical packages/files
+  - 1 component = 1 or more assets
+
+#### 9 - Cleanup Policies and Scheduled Tasks <a name="cleanup-policies-and-scheduled-tasks"></a>
+- Cleanup Policies:
+  - Clean up old artifacts to make space. You can define logic like:
+    - Delete all artifacts older than 30 days
+    - Delete all artifacts, which haven't been used/downloaded for more than 10 days
+    - You can create own cleanup policy for each repository
+  - Scheduled Tasks
+    - Nexus allows you to schedule tasks that will be applied to all or a specific repository on a configurable schedule

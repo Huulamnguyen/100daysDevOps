@@ -61,6 +61,13 @@ Check it out at [Techworld with Nana][def]
 3. [3 - Deploy and run application artifact on Droplet](#deploy-and-run-application-artifact-on-droplet)
 4. [4 - Create and configure a Linux user on a cloud server](#create-and-configure-linux-user-on-cloud-server)
 
+### 6 - Artifact Repository Manager with Nexus
+1. [1 - Intro to Artifact Repository Manager](#intro-to-artifact-repository-manager)
+2. [2 - Install and Run Nexus on a cloud server](#install-nexus-on-cloud-server)
+5. [5 - Publish Artifact to Repository](#publish-artifact-to-repository)
+6. [6 - Nexus REST API](#nexus-rest-api)
+7. [7 - Blob Store](#blob-store)
+
 ## Contents
 
 ### 2. Operating Systems & Linux Basics 
@@ -121,7 +128,7 @@ On the top is kernel is the application layer. For instance:
 - Linux, Windows, Mac OS
 
 **Client OS vs Server OS**
-CLient OS:
+Client OS:
     - For personal computers with GUI and Input/Output (I/O) devices
 
 Server OS:
@@ -300,7 +307,7 @@ Execute commands as superuser
 - APT-GET:
     - On Ubuntu, APT-GET also out of the box available
     - Different set of commands
-    - You can achieve the same user friendly output, if you use additional command options
+    - You can achieve the same user-friendly output, if you use additional command options
     - E.g. "apt search" not available
 
 **Alternative ways to install software**
@@ -406,7 +413,7 @@ Execute commands as superuser
 
 - **DNS (Domain Name System)**:
     - DNS is the phonebook of the internet 
-    - It translates human readable domain names (for example: www.amazon.com) to machine readable IP addresses
+    - It translates human-readable domain names (for example: www.amazon.com) to machine readable IP addresses
     - **How DNS resolution works**:
         - When you enter a website in a browser, a DNS client on your computer needs to look up the corresponding IP address
         - It queries DNS servers to resolve the name 
@@ -643,14 +650,14 @@ Execute commands as superuser
 - **Infrastructure as a Service Providers**
     - AWS
     - Digital Ocean
-    - Miscrosoft Azure
+    - Microsoft Azure
     -  Google Cloud
 
 #### 2 - Setup Server on DigitalOcean <a name="setup-server-on-digitalocean"></a>
 - server on DO is called a droplet
 - Better practice: 
     - Connect to server with SSH pblic key from your local machine
-    - Creata firewall
+    - Create firewall
 
 #### 3 - Deploy and run application artifact on Droplet <a name="deploy-and-run-application-artifact-on-droplet\"></a>
 
@@ -665,10 +672,52 @@ Execute commands as superuser
 
 #### 4 - Create and configure a Linux user on a cloud server <a name="create-and-configure-linux-user-on-cloud-server"></a>
 - Security best practices:
-    - Create seperate user for every application, avoid using root user
+    - Create separated user for every application, avoid using root user
     - Create new user: `adduser <user>`
     - Change or update permissions, add to **sudo** group: `usermod -aG sudo <username>`
     - Switch to other user: `su - <user>`
         - **$**: Standard Linux user
         - **#**: Root user
     - Assign SSH public key to standard user
+
+### 6 - Artifact Repository Manager with Nexus
+#### 1 - Intro to Artifact Repository Manager <a name="intro-to-artifact-repository-manager"></a>
+- Artifact repository manager: Just 1 repository for managing allyour different artifact types
+
+- Nexus is an Artifact Repository Manager.
+    - Upload and store different built artifacts
+    - Retrive (download) artifacts later
+    - Central storage
+    - For internal use, private in the company
+
+- Public repository manager
+    - Maven Central Repository for java/jar files
+    - npm repository for JavaScript
+
+#### 2 - Install and Run Nexus on a cloud server <a name="install-nexus-on-cloud-server"></a>
+- To install Nexus on a cloud server DO, create a droplet and install Java version 8
+- Best practice:
+    - Should run nexus server with a user, not root user
+    - Command to ass user `adduser nexus`
+    - Change permissions to a user `chown -R nexus:nexus nexus-3.52.0-01` and `chown -R nexus:nexus sonatype-work`
+    - Start Nexus server `/opt/nexus-3.52.0-01/bin/nexus start`
+        - Check if Nexus running: `ps aux | grep nexus` or `netstat -lnpt`
+    - Get admin password for Nexus UI: `cat /opt/sonatype-work/nexus3/admin.password`
+
+#### 5 - Publish Artifact to Repository <a name="publish-artifact-to-repository"></a>
+- Best practice to allow user (as developer) to upload artifacts
+- Publish Java Gradle to Nexus:
+    - Add `apply plugin: 'maven-publish'` to java gradle or maven app at `build.gradle` to upload java artifacts, allow gradle to connect to nexus
+
+#### 6 - Nexus REST API <a name="nexus-rest-api"></a>
+- You can also interact with Nexus using its REST API to do multiple things:
+  - query for different information: 
+  - download an artifact
+    upload an artifact
+- How to interact?
+    - Using a tool like curl or wget to execute http request 
+    - You need to provide user and credential of a Nexus user
+- List all available repositories as admin in nexus `curl -u usr:pwd -X GET "http://localhost:8081/service/rest/v1/repositories"`
+- List all components in the certain repo `curl -u usr:pwd -X GET "http://localhost:8081/service/rest/v1/components?repository=maven-snapshots"
+
+#### 7 - Blob Store <a name="blob-store"></a>

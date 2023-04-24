@@ -73,6 +73,8 @@ Check it out at [Techworld with Nana][def]
 ### 7. Containers with Docker
 1. [1 - What is a Container](#what-is-a-container)
 2. [2 - Container vs Image](#container-vs-image)
+3. [3 - Docker vs. Virtual Machine](#docker-vs-vm)
+4. [4 - Docker Architecture and components](#docker-architecture-and-component)
 
 ## Contents
 
@@ -772,3 +774,26 @@ Execute commands as superuser
 #### 2 - Container vs Image <a name="container-vs-image"></a>
 - Docker Image is a package which is an artifact can be moved around
 - Docker Container is the environment created from the artifact (running on a machine)
+
+#### 3 - Docker vs. Virtual Machine <a name="docker-vs-vm"></a>
+- Size: Docker Image much smaller
+- Speed: Docker containers start and run much faster
+- Compatibility: VM of any OS can run on any OS host
+
+#### 4 - Docker Architecture and components <a name="docker-architecture-and-component"></a>
+- Docker Engine:
+  - Server
+    - Pulling Images
+    - Managing images & containers
+  - API
+    - Interacting with docker server
+  - CLI
+    - Client to execute Docker commands
+
+- Server:
+  - Container runtime:
+    - Pulling images
+    - Managing container lifecycle
+  - Volumes: persisting data
+  - Network: configuring network for container communication
+  - Build Images

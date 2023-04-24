@@ -72,6 +72,7 @@ Check it out at [Techworld with Nana][def]
 
 ### 7. Containers with Docker
 1. [1 - What is a Container](#what-is-a-container)
+2. [2 - Container vs Image](#container-vs-image)
 
 ## Contents
 
@@ -767,3 +768,7 @@ Execute commands as superuser
 - Container is a way to package application with all the necessary dependencies and configuration
 - It is a portable artifact, easily to shared and moved around
 - Containers make development and deployment more efficient.
+
+#### 2 - Container vs Image <a name="container-vs-image"></a>
+- Docker Image is a package which is an artifact can be moved around
+- Docker Container is the environment created from the artifact (running on a machine)

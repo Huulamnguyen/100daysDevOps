@@ -70,6 +70,9 @@ Check it out at [Techworld with Nana][def]
 8. [8 - Component vs Asset](#component-vs-asset)
 9. [9 - Cleanup Policies and Scheduled Tasks](#cleanup-policies-and-scheduled-tasks)
 
+### 7. Containers with Docker
+1. [1 - What is a Container](#what-is-a-container)
+
 ## Contents
 
 ### 2. Operating Systems & Linux Basics 
@@ -451,11 +454,11 @@ Execute commands as superuser
 #### 1. Introduction to Version Control and Git <a name="introduction-to-version-control-and-git"></a>
 
 - Git control is an approach for team of developers working together
-- Git knows how to mnerge automatically
+- Git knows how to merge automatically
 - **Merge conflict** when same line was changed
 - Best practice: push and pull often from remote repo
 
->> Continuous Integration: intergrate your code changes frequently
+>> Continuous Integration: integrate your code changes frequently
 
 #### 2. Basic Concepts of Git <a name="basic-concepts-of-git"></a>
 - Remote Git Repository: where the code is hosted, e.g. on **Gitlab** or **GitHub**
@@ -464,7 +467,7 @@ Execute commands as superuser
 
 #### 3. Setup Git Repository Remote and Local <a name="setup-git-remote-and-local"></a>
 
-**Some Git Commans that I think they are useful:**
+**Some Git Command that I think they are useful:**
 - To show commit log: 
     - `git log`
 - Gitignore:
@@ -486,22 +489,22 @@ Execute commands as superuser
     - Then, `git merge master` the local master branch to the feature branch.
 
 **Git for DevOps**
-- Infrastructura as code
+- Infrastructure as code
     - Many Kubernetes Configuration Files. Deployment to Kubernetes
-    - Terrform and Ansible COnfiguration Files
+    - Terraform and Ansible Configuration Files
     - Bash or Python scripts
     - Files should be:
         - Tracked - history of changes
         - Securely store in one place
         - Shareable for DevOps team.
-- CI/Cd Pipline and Build Automation
+- CI/Cd Pipeline and Build Automation
     - Checkout code, test and build application, etc.
-    - Need integration btween the build automation tool and application git repository.
+    - Need integration between the build automation tool and application git repository.
 
 ### Bonus - Databases
 #### 1 - Databases in development process <a name="databases-in-development-process"></a>
 **How does databases connect to your application?**
-- DB endpoinbts & credentials should not be hard-coded
+- DB endpoints & credentials should not be hard-coded
 - Define in 1 place as environment variables
 - Configure from outside
 - Depending on environment DEV, TEST, PROD
@@ -509,7 +512,7 @@ Execute commands as superuser
 #### 2 - Database Types <a name="database-type"></a>
 **Database Types**
 - Key Value Database: 
-    - unquie key, no joinn, in memory
+    - Unique key, no join, in memory
     - Very fast
     - Limited storage
     - No primary DB
@@ -684,11 +687,11 @@ Execute commands as superuser
 
 ### 6 - Artifact Repository Manager with Nexus
 #### 1 - Intro to Artifact Repository Manager <a name="intro-to-artifact-repository-manager"></a>
-- Artifact repository manager: Just 1 repository for managing allyour different artifact types
+- Artifact repository manager: Just 1 repository for managing all your different artifact types
 
 - Nexus is an Artifact Repository Manager.
     - Upload and store different built artifacts
-    - Retrive (download) artifacts later
+    - Retrieve (download) artifacts later
     - Central storage
     - For internal use, private in the company
 
@@ -698,10 +701,21 @@ Execute commands as superuser
 
 #### 2 - Install and Run Nexus on a cloud server <a name="install-nexus-on-cloud-server"></a>
 - To install Nexus on a cloud server DO, create a droplet and install Java version 8
+  - `apt update`
+  - `apt install openjdk-8-jre-headless`
+  - `apt install net-tools`
+  - Download and install Nexus on DO:
+    - `cd /opt`
+    - `wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz`
+    - `tar -zxvf latest-unix.tar.gz`
+  - 
 - Best practice:
     - Should run nexus server with a user, not root user
     - Command to ass user `adduser nexus`
     - Change permissions to a user `chown -R nexus:nexus nexus-3.52.0-01` and `chown -R nexus:nexus sonatype-work`
+    - Set nexus user to run nexus: 
+      - `vim nexus-3.28.1-01/bin/nexus.rc`
+      - `run_as_user="nexus"`
     - Start Nexus server `/opt/nexus-3.52.0-01/bin/nexus start`
         - Check if Nexus running: `ps aux | grep nexus` or `netstat -lnpt`
     - Get admin password for Nexus UI: `cat /opt/sonatype-work/nexus3/admin.password`
@@ -747,3 +761,9 @@ Execute commands as superuser
     - You can create own cleanup policy for each repository
   - Scheduled Tasks
     - Nexus allows you to schedule tasks that will be applied to all or a specific repository on a configurable schedule
+
+### 7 - Containers with Docker
+#### 1 - What is a Container <a name="what-is-a-container"></a>
+- Container is a way to package application with all the necessary dependencies and configuration
+- It is a portable artifact, easily to shared and moved around
+- Containers make development and deployment more efficient.

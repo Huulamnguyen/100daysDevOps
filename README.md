@@ -75,6 +75,9 @@ Check it out at [Techworld with Nana][def]
 2. [2 - Container vs Image](#container-vs-image)
 3. [3 - Docker vs. Virtual Machine](#docker-vs-vm)
 4. [4 - Docker Architecture and components](#docker-architecture-and-component)
+5. [5 - Main Docker Commands](#main-docker-commands)
+6. [6 - Debug Commands](#debug-commands)
+8. [8 - Developing with Docker](#developing-with-docker)
 
 ## Contents
 
@@ -797,3 +800,53 @@ Execute commands as superuser
   - Volumes: persisting data
   - Network: configuring network for container communication
   - Build Images
+
+#### 5 - Main Docker Commands <a name="main-docker-commands"></a>
+- Difference between Image and Container
+  - Container is a running environment for Image
+- Main Docker Commands:
+  - `docker run`: creates a new container from an image
+    - `docker run -d`: start a detached mode 
+    - `docker run redis:6.2`: pull the redis version 6.2 and start the container
+    - `docker run -p6000:6379 redis`: binding a container to the host port
+  - `docker pull`: pull images from the docker repo to local
+  - `docker start`: starts one or more stopped container
+  - `docker stop`: stops running container
+  - `docker images`: list all the locally stored docker images
+  - `docker ps`: lists the running containers
+  - `docker ps -a`: show all the running and exited containers
+
+#### 6 - Debug Commands <a name="debug-commands></a>:
+  - `docker logs`: fetch logs of container
+  - `docker exec -it`: create a new bash session on the containers
+
+#### 8 - Developing with Docker <a name="developing-with-docker"></a>
+- Demo: Docker in Software Development
+  - Pull MongoBD and Mongo-Express from Docker Hub:
+    - `docker pull mongo`
+    - `docker pull mongo-express`
+  - Run and connect mongodb with mongo-express by docker network
+    - Check network `docker network ls` 
+    - Create network for mongodb and mongo-express `docker network create mongo-network`
+    - Run mongodb and connect to network:
+      `
+       docker run -d \
+       -p 27017:27017 \
+       -e MONGO_INITDB_ROOT_USERNAME=admin \
+       -e MONGO_INITDB_ROOT_PASSWORD=password \
+       --name mongodb \
+       --net mongo-network \
+       mongo
+      `
+    - Run mongo-express and connect to network:
+        `
+        docker run -d \
+        -p 8081:8081 \
+        -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+        -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+        -e ME_CONFIG_MONGODB_SERVER=mongodb \
+        --name mongo-express \
+        --net mongo-network \
+        mongo-express
+        `
+    - Check local host port 8081 should be up and running

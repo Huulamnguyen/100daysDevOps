@@ -78,6 +78,15 @@ Check it out at [Techworld with Nana][def]
 5. [5 - Main Docker Commands](#main-docker-commands)
 6. [6 - Debug Commands](#debug-commands)
 8. [8 - Developing with Docker](#developing-with-docker)
+9. [9 - Docker Compose - Run multiple Docker containers](#docker-compose-run-multiple-docker-containers)
+10. [10 - Dockerfile - Build your own Docker Image](#docker-file-build-your-own-docker-image)
+11. [11 - Private Docker Repository](#private-docker-repository)
+12. [12 - Deploy docker application on a server](#deploy-docker-application-on-a-server)
+13. [13 - Docker Volumes - Persisting Data](#docker-volumes-persisting-data)
+14. [14 - Docker Volumes Demo](#docker-volumes-demo")
+15. [15 - Create Docker Hosted Repository on Nexus](#create-docker-hosted-repository-on-nexus)
+16. [16 - Deploy Nexus as Docker Container](#deploy-nexus-as-docker-container)
+17. [17 - Docker Best Practices](#docker-best-practices)
 
 ## Contents
 
@@ -850,3 +859,66 @@ Execute commands as superuser
         mongo-express
         `
     - Check local host port 8081 should be up and running
+#### 9 - Docker Compose - Run multiple Docker containers <a name="docker-compose-run-multiple-docker-containers"></a>
+- Docker compose for example **mongo-docker-compose.yaml** is a way to structure docker commands.
+- How to use docker compose file:
+  - `docker-compose -f docker-compose.yaml up`: will create and start all containers in the yaml file.
+  - `docker-compose -f docker-compose.yaml down`: will shut all containers in the yaml file down.
+
+#### 10 - Dockerfile - Build your own Docker Image <a name="docker-file-build-your-own-docker-image"></a>
+- Scenario: finished building features and tested. Now ready to deploy. 
+- To deploy, the application need to be packaged into its own container
+- What is docker file? a blueprint for building images
+- How to build docker file?
+  - `docker build -t my-app:1.0 .`
+  - `docker run my-app:1.0`
+- Delete an image:
+  - `docker rmi [image id]`
+- Delete a container
+  - `docker rm [container id]`
+
+#### 11 - Private Docker Repository <a name="private-docker-repository"></a>
+- Docker registry
+  - Registry options: Amazon ECR
+  - Build & Tag an image
+  - Docker login
+  - Docker push
+- 
+- Create private docker repository on AWS ECR
+  - Push image into the AWC ECR repository:
+    - Follow step on AWS ECR
+
+#### 12 - Deploy docker application on a server <a name="deploy-docker-application-on-a-server"></a>
+#### 13 - Docker Volumes - Persisting Data <a name="docker-volumes-persisting-data"></a>
+#### 14 - Docker Volumes Demo <a name="docker-volumes-demo></a>
+#### 15 - Create Docker Hosted Repository on Nexus <a name="create-docker-hosted-repository-on-nexus"></a>
+- Steps to run Nexus on Droplet
+  - Install Java 
+  - Download Nexus Package
+  - Untar Nexus package
+  - Create Nexus user
+  - Give user permission
+  - Run Nexus with Nexus User
+
+#### 16 - Deploy Nexus as Docker Container <a name="deploy-nexus-as-docker-container"></a>
+- An easier way to install nexus and run much faster: deploy nexus as a Docker Container
+  - Create a new droplet on Digital Ocean UI, assign firewall rules
+  - On DO CLI, update `apt update` and install docker `snap install docker`
+  - On docker hub, find and pull nexus image "nexus3"
+  - Configure all persisting data on server, need to config volumes [persisting data](https://hub.docker.com/r/sonatype/nexus3#persistent-data)
+    - `$ docker volume create --name nexus-data`
+    - `$ docker run -d -p 8081:8081 --name nexus -v nexus-data:/nexus-data sonatype/nexus3`
+
+#### 17 - Docker Best Practices <a name="docker-best-practices"></a>
+- Use official Docker Images as Base Image
+- Use Specific Image Versions, for example: node:17.0.1
+- Use Small-sized Official Images, eg: node:17.0.1-alpine (alpine linux - much lightweight)
+- Optimize Caching Image Layers
+- Order Dockerfile commands from least to most frequently changing to optimize fast image built
+- How to exclude: use .Dockerignore to explicitly exclude files and folders
+- Contents that you need for building the image but no need in the final image to run the app
+  - Multi-Stage Builds
+- Use the least privileged User
+- Scan your images for vulnerabilities `docker scan myapp:1.0`
+  - Docker login 
+  - Docker scan
